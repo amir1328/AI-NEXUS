@@ -4,7 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     demoButtons.forEach(button => {
         button.addEventListener('click', () => {
-            alert('This is an interactive demo!');
+            alert('Check our projects');
         });
     });
 });
+
+function toggleMenu() {
+    const navList = document.querySelector('ul');
+    navList.classList.toggle('show');
+}
