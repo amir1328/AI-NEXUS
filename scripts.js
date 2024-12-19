@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function toggleMenu() {
-    const navList = document.querySelector('ul');
-    navList.classList.toggle('show');
-}
+// Toggle menu on button click
+document.getElementById("menu-toggle").addEventListener("click", function() {
+    const navList = document.querySelector("nav ul");
+    navList.classList.toggle("active"); // Toggle the 'active' class to show/hide menu
+});
+
