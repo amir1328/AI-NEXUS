@@ -328,3 +328,86 @@ button:hover {
     color: #ccc;
     line-height: 1.6;
 }
+
+/* Basic reset */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for the navigation menu */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #111; /* Dark background */
+    position: relative;
+}
+
+nav .logo img {
+    height: 50px; /* Logo size */
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Center items horizontally */
+    flex-grow: 1; /* Take up remaining space */
+    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition */
+    opacity: 1; /* Make the menu visible by default */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #c90000; /* Dark red */
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff0000; /* Slightly brighter red */
+}
+
+/* Menu toggle button (shown on small screens) */
+.menu-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: 20px; /* Align button to the right */
+}
+
+/* Hide menu on small screens by default */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex; /* Keep the flexbox display, but will be hidden off-screen initially */
+        flex-direction: column; /* Stack vertically */
+        width: 250px; /* Set the width of the slide-out menu */
+        background-color: #111;
+        position: absolute;
+        top: 60px; /* Position below the logo */
+        right: 0; /* Position the menu on the right side */
+        padding: 10px 20px;
+        transform: translateX(100%); /* Initially hide the menu off-screen to the right */
+        opacity: 0; /* Initially hide the menu */
+        border-top-left-radius: 10px; /* Rounded top-left corner */
+        border-bottom-left-radius: 10px; /* Rounded bottom-left corner */
+        box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3); /* Floating shadow effect */
+    }
+
+    .menu-toggle {
+        display: block; /* Show the menu toggle button */
+    }
+
+    nav ul.active {
+        transform: translateX(0); /* Slide the menu into view from the right */
+        opacity: 1; /* Fade the menu into view */
+    }
+}
