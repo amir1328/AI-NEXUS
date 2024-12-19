@@ -12,6 +12,7 @@
             <a href="index.html" class="logo">
                 <img src="logo.png" alt="AI NEXUS Logo">
             </a>
+            <button class="menu-toggle" id="menu-toggle">☰</button>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -24,9 +25,10 @@
     
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
-        <form action="submit_form.php" method="POST">
+        <form id="myForm">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
+            <input type="number" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="Enter mobile number" required> 
             <textarea name="message" placeholder="Your Message" required></textarea>
             <button type="submit">Send Message</button>
         </form>
@@ -39,15 +41,53 @@
         </div>
     </section>
     
-    
     <footer>
         <p>&copy; 2024 AI NEXUS. All rights reserved.</p>
         <div class="social-media">
             <a href="https://www.instagram.com/ainexus_innovative" target="_blank">Instagram</a>
-            <a href="https://linkedin.com/company/ainexus" target="_blank">LinkedIn</a>
+            <a href="https://www.facebook.com/profile.php?id=61570360906954" target="_blank">Facebook</a>
         </div>
     </footer>
     
     <script src="scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const form = new FormData(this);
+
+            // Get form data
+            const name = form.get('name');
+            const email = form.get('email');
+            const mobile = form.get('mobile');
+            const message = form.get('message');
+
+            // Prepare data to be sent to the server
+            const data = {
+                name: name,
+                email: email,
+                mobile: mobile,
+                message: message
+            };
+
+            // Send the data to the server using AJAX
+            fetch('submit_form.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
 </body>
 </html>
