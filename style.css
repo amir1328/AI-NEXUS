@@ -100,6 +100,7 @@ nav ul li a.active::after {
     z-index: 1; /* Ensure content is above the video */
     text-align: center;
     padding: 60px 20px;
+    top: 37%;
 }
 
 .hero-content h1 {
@@ -387,11 +388,13 @@ nav ul li a:hover {
 /* Hide menu on small screens by default */
 @media (max-width: 768px) {
     nav ul {
+        
         display: flex; /* Keep the flexbox display, but will be hidden off-screen initially */
         flex-direction: column; /* Stack vertically */
-        width: 250px; /* Set the width of the slide-out menu */
+        width: 91%; /* Set the width of the slide-out menu */
         background-color: #111;
         position: absolute;
+        z-index: 1000;
         top: 60px; /* Position below the logo */
         right: 0; /* Position the menu on the right side */
         padding: 10px 20px;
